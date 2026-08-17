@@ -1,0 +1,11 @@
+{
+  "name": "com.menoustore.license",
+  "version": "1.0.0",
+  "displayName": "menou-store License Auth",
+  "description": "menou-store販売ツール共通のパスワード認証Editor拡張",
+  "unity": "2022.3",
+  "author": {
+    "name": "menou-store",
+    "url": "https://github.com/menou2846"
+  }
+}

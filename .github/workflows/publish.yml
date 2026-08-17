@@ -1,0 +1,48 @@
+name: Publish VPM Listing
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout tag
+        uses: actions/checkout@v4
+
+      - name: Build zips and update index.json
+        run: |
+          mkdir -p /tmp/dist
+
+          for dir in packages/*/; do
+            name=$(basename "$dir")
+            version=$(jq -r .version "$dir/package.json")
+            zipfile="/tmp/dist/${name}-${version}.zip"
+            (cd "$dir" && zip -r "$zipfile" . -x ".git/*")
+            sha256=$(sha256sum "$zipfile" | cut -d' ' -f1)
+            echo "$name|$version|$sha256|$zipfile" >> /tmp/dist/manifest.txt
+          done
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch origin main
+          git checkout main
+          mkdir -p Releases
+
+          while IFS='|' read -r name version sha256 zipfile; do
+            cp "$zipfile" "Releases/${name}-${version}.zip"
+            url="https://raw.githubusercontent.com/${{ github.repository }}/main/Releases/${name}-${version}.zip"
+            python3 .github/scripts/update_index.py \
+              "packages/${name}/package.json" \
+              "$name" "$version" "$sha256" "$url" "${{ github.repository }}"
+          done < /tmp/dist/manifest.txt
+
+          git add Releases index.json
+          git commit -m "Publish packages ($(date -u +%Y-%m-%dT%H:%M:%SZ))" || echo "no changes to commit"
+          git push origin main
