@@ -3,5 +3,23 @@
   "author": "menou-store",
   "id": "dev.menou2846.com.menoustore.license",
   "url": "https://raw.githubusercontent.com/menou2846/com.menoustore.license/main/index.json",
-  "packages": {}
+  "packages": {
+    "com.menoustore.license": {
+      "versions": {
+        "1.0.0": {
+          "name": "com.menoustore.license",
+          "version": "1.0.0",
+          "displayName": "menou-store License Auth",
+          "description": "menou-store販売ツール共通のパスワード認証Editor拡張",
+          "unity": "2022.3",
+          "author": {
+            "name": "menou-store",
+            "url": "https://github.com/menou2846"
+          },
+          "url": "https://raw.githubusercontent.com/menou2846/com.menoustore.license/main/Releases/com.menoustore.license-1.0.0.zip",
+          "zipSHA256": "9c547de4559f08e9448315e2af3fc3b865a0e223e55e8635391851e414c6a834"
+        }
+      }
+    }
+  }
 }
