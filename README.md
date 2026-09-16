@@ -1,6 +1,6 @@
 # menou-store License Auth
 
-menou-store がBOOTH等で販売するUnityツール共通の、パスワード認証Editor拡張です。
+menou-store がFanbox等で配布するUnityツール共通の、パスワード認証Editor拡張です。
 
 ## 含まれるパッケージ
 
