@@ -1,6 +1,6 @@
 {
   "name": "com.menoustore.license",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "displayName": "menou-store License Auth",
   "description": "menou-store販売ツール共通のパスワード認証Editor拡張",
   "unity": "2022.3",

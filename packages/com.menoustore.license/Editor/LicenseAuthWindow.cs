@@ -11,13 +11,13 @@ namespace MenouStore.License
         private MessageType _statusType = MessageType.None;
         private bool _busy;
 
-        [MenuItem("menou-store/License Authentication")]
+        [MenuItem("Meno Tools/ライセンス認証")]
         private static void OpenFromMenu()
         {
             Open("default");
         }
 
-        [MenuItem("menou-store/Reset License Authentication")]
+        [MenuItem("Meno Tools/ライセンス認証をリセット")]
         private static void ResetFromMenu()
         {
             LicenseAuth.ResetAuthentication("default");
